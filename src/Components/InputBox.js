@@ -4,17 +4,20 @@ export default function InputBox(props) {
     const handleOnClickToUp = () => {
         if (text.length !== 0) {
             setText(text.toUpperCase());
+            props.showAlert('Your text has been converted to uppercase', 'success')
+
         }
         else {
-            alert("Please Write something in the box.!")
+            props.showAlert('Please enter something in the input section!', 'warning')
         }
     }
     const handleOnClickToLo = () => {
         if (text.length !== 0) {
+            props.showAlert('Your text has been converted to lowercase', 'success')
             return setText(text.toLowerCase());
         }
         else {
-            alert("Please Write something in the box.!")
+            props.showAlert('Please enter something in the input section!', 'warning')
         }
     }
     const handleOnChange = (event) => {
@@ -22,17 +25,24 @@ export default function InputBox(props) {
     }
     const handleOnClickClear = () => {
         if (text.length !== 0) {
+            props.showAlert('Your text has been cleared.', 'success')
             return setText('')
         }
         else {
-            alert("Nothing to Clear..!")
+            props.showAlert('There is no any word to clear!!', 'warning')
         }
     }
     // copy text function 
     const handleOnCopyText = () => {
-        let textBox = document.querySelector('#textBox');
-        textBox.select();
-        navigator.clipboard.writeText(textBox.value)
+        if (text.length > 0) {
+            let textBox = document.querySelector('#textBox');
+            textBox.select();
+            navigator.clipboard.writeText(textBox.value)
+            props.showAlert('Your text has beed copied to clipboard', 'success')
+        }
+        else {
+            props.showAlert('Enter your paragraph to copy!!', 'warning')
+        }
     }
 
 
