@@ -4,6 +4,14 @@ import InputBox from "./Components/InputBox";
 import { useState } from "react";
 import Alert from "./Components/Alert";
 import About from "./Components/About";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useParams,
+  BrowserRouter
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light') // wheter mode is dark or light
@@ -47,10 +55,18 @@ function App() {
   }
   return (
     <>
-      <Navbar heading="TextUtils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <InputBox textAreaHeading="Enter the text below to count words, characters and reading time of your paragraph." mode={mode} toggleMode={toggleMode} showAlert={showAlert} />
-      <About mode={mode} />
+      <BrowserRouter>
+
+        {/* <InputBox textAreaHeading="Enter the text below to count words, characters and reading time of your paragraph." mode={mode} toggleMode={toggleMode} showAlert={showAlert} /> */}
+        {/* <About mode={mode} /> */}
+        <Navbar heading="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+
+        <Routes>
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<InputBox textAreaHeading="Enter the text below to count words, characters and reading time of your paragraph." mode={mode} toggleMode={toggleMode} showAlert={showAlert} />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function About(props) {
         <>
 
             <div className="conatanier">
-                <h1 className='text-center'>Hello</h1>
+                <h1 className='text-center'>Hello this is the about file.</h1>
             </div>
         </>
     )
