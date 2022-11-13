@@ -56,15 +56,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-
-        {/* <InputBox textAreaHeading="Enter the text below to count words, characters and reading time of your paragraph." mode={mode} toggleMode={toggleMode} showAlert={showAlert} /> */}
-        {/* <About mode={mode} /> */}
         <Navbar heading="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
 
         <Routes>
-          <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<InputBox textAreaHeading="Enter the text below to count words, characters and reading time of your paragraph." mode={mode} toggleMode={toggleMode} showAlert={showAlert} />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
